@@ -1,0 +1,17 @@
+public class StringArrayTest {
+    public static List<string>generateStringArray(Integer n){
+        List<String> myArray = new List<String>();
+        for(Integer i=0; i<n;i++){
+            myArray.add('Test '+i);
+            System.debug(myArray[i]);
+        }
+        return myArray;
+    }
+
+}
+
+
+//written in Apex, 16 July 2020
+//challenge was to create an Apex class with a method that returns an array of strings.
+//generateStringArray method had to accept an incoming Integer as a parameter, which would determine the number of returned strings.
+//the method must return a string value in the format Test n where n is the index of the current string in the array. 
