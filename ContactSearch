@@ -1,0 +1,8 @@
+public class ContactSearch{
+    public static List<Contact>searchForContacts(string lastname, string MailingPostalCode){
+        List<Contact>ContactList=[SELECT ID, Name, LastName, MailingPostalCode FROM Contact WHERE LastName=:LastName AND MailingPostalCode=:MailingPostalCode];
+        return ContactList;
+    }
+}
+
+// This was a challenge to create an Apex class that returns contacts based on incoming parameters. 
