@@ -1,4 +1,4 @@
-<apex:page standardController="Account recordSetVar="Accounts">
+<apex:page standardController="Account" recordSetVar="Accounts">
   <apex:pageblock>
     <apex:repeat var="a" value="{!Accounts}" rendered="true" id="account_list">
       <li>
