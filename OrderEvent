@@ -1,0 +1,23 @@
+trigger OrderEventTrigger on Order_Event__e (after insert) {
+	//list to hold all tasks to be created.
+	List<Task> tasks=new List<Task>();
+    
+    //get user id who is active to assign the Tasks
+    User q = [Select Id from User WHERE IsActive = true LIMIT 1];
+    
+    //iterate through each notification
+    for(Order_Event__e event:Trigger.New){
+        //get all the order shipped events
+        if(event.Has_Shipped__c == true){
+            //create a task when order is shipped
+            Task tk = new Task();
+            tk.Priority = 'Medium';
+            tk.Status = 'New';
+            tk.Subject = 'Follow up on shipped order ' + event.Order_Number__c;
+            tk.OwnerId = q.id;
+            tasks.add(tk);
+        }
+    }
+    //insert all tasks corresponding to events received. 
+    insert tasks;
+}
